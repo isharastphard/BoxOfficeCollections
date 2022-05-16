@@ -54,3 +54,17 @@ money.plot(kind='bar', title='Average Revenue of Movie Genre', xlabel='Genre', y
                     figsize=(10, 5), width=0.5, color=my_colors)
 plt.show()
 '''
+
+dated = df[['Year', 'Box Office Collection']]
+year_money_made = dated.groupby(['Year'])['Box Office Collection'].max()
+year_money_made.plot(kind='bar', title='Year with the Most Money Made', xlabel='Genre', ylabel='Revenue (in 100M)',
+                    figsize=(10, 5), width=0.5, color=my_colors)
+#plt.show()
+
+#Avengers: Endgame has earned the most money - but Zooptopia is listed if i use max
+movie_gross = df[['Movie', 'Box Office Collection', 'Year']]
+#print(movie_gross['Box Office Collection'].nlargest(n=10))
+
+print("The Top 10 Highest Grossing movies are: ", movie_gross.loc[[399]], movie_gross.loc[[388]], movie_gross.loc[[395]],
+      movie_gross.loc[[894]], movie_gross.loc[[939]], movie_gross.loc[[930]], movie_gross.loc[[637]], movie_gross.loc[[328]],
+      movie_gross.loc[[928]], movie_gross.loc[[915]])
